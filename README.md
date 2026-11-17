@@ -2,7 +2,7 @@
 
 > 하고 싶은 것만 말하면, 장소·동선·시간은 AI 플래너 "너굴"이 정리해 주는 **내 컴퓨터용 여행 다이어리**
 
-만든 사람: **sillverwater** · 개인 비상업적 용도
+만든 사람: **sillverwater** · [MIT License](LICENSE)
 
 ---
 
@@ -284,7 +284,8 @@ Project/
 
 ## 10. 저작권 · 라이선스
 
-- **P의 여행수첩** 기획·개발 © 2026 sillverwater. 개인 비상업적 용도로만 사용해 주세요.
+- **P의 여행수첩** 소스 코드 © 2026 sillverwater, [MIT License](LICENSE). 저작권 표시를 남기면 자유롭게 사용·수정·배포할 수 있어요.
+- 아래 외부 자료와 서비스는 MIT 라이선스에 포함되지 않고, 각자의 라이선스·이용약관을 따라요.
 - 장소 검색·지도: 카카오 로컬 API · 카카오맵 © Kakao Corp.
 - 보조 장소 데이터: © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL)
 - 글꼴: 주아체(Jua), 고운돋움 — SIL Open Font License 1.1 (`frontend/fonts/OFL-*.txt`)
