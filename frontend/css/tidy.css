@@ -1,0 +1,70 @@
+/* 정리 레이어 (2026-11-17): 블록 구분 단순화 · 글꼴 역할 분리 · 버튼 3종류.
+   island.css 뒤에 덮어쓰는 파일입니다. 되돌리려면 index.html에서 이 파일의 <link> 한 줄만 지우면 됩니다. */
+
+/* ---------- 2. 블록 구분: 색 띠·점선 대신 테두리 + 아이콘 + 여백 ---------- */
+.card {
+  border: 2px solid var(--line) !important;   /* 블록별 색 띠(일부는 #id 규칙)까지 한 번에 정리 */
+  box-shadow: 0 2px 0 rgba(120, 90, 40, .05), 0 8px 20px rgba(80, 60, 30, .06);
+}
+[data-theme='dark'] .card { box-shadow: 0 8px 20px rgba(0, 0, 0, .28); }
+.card .card-head, .home .card-head, .chat-panel .chat-head { padding-bottom: 0; border-bottom: 0; margin-bottom: 14px; }
+.card-head img.head-icon { width: 32px; height: 32px; }
+/* 소개글·달력은 블록 없이 그대로 */
+.home .intro-card, .home .clock-card { border: 0 !important; box-shadow: none; background: none; }
+/* 블록 사이 여백을 조금 넓혀서 테두리 없이도 구분되게 */
+.home, .home-right, .home-pair, #trips-page, .right-stack, .ledger-grid, .docs-grid { gap: 20px; }
+
+/* ---------- 3. 글꼴 역할: 신디나루 = 제목·버튼·이름표 / 고운돋움 = 읽는 글·숫자 ---------- */
+body { font-variant-numeric: tabular-nums; }
+.planning-message p, .planning-message.assistant p, .talk-bubble p, .docs-intro p, .doc-result p,
+.cta p, .intro-note, .hero-description, .steps p, .field-hint, .note-hint,
+.dialog-body label, .expense-form label, .doc-form label, .extract-box label, .inline-field,
+.chat-conditions label, .itinerary-controls label, .schedule-controls label,
+.summary-more dt, .summary-more > summary, .reservation-card legend, .choice-group legend,
+.trip-summary-strip span, .info-route, .info-label, .budget-name, .quick-text, .quick-dday,
+.ledger-days b, .ledger-stats dd, .info-stats dd, .profile-stats dd,
+.schedule-time, .schedule-cost, .schedule-remark, .day-total, .day-group th, .schedule-table th,
+.ticket-field b, .ticket-confirm b, .cal-head, .clock-date, .typing-label, .pop-label, .more-link {
+  font-family: var(--font-body);
+}
+.planning-message.assistant p { font-size: .9rem; line-height: 1.65; }
+.dialog-body label, .expense-form label, .doc-form label, .extract-box label,
+.summary-more dt, .reservation-card legend, .choice-group legend { font-weight: 700; }
+.ledger-stats dd, .info-stats dd, .profile-stats dd, .day-total, .schedule-time { font-weight: 700; }
+/* 신디나루 유지: h1~h3, .eyebrow, 버튼, .name-tag, .chip, 탭, 날짜 탭 제목, 티켓 제목, 시계 */
+
+/* ---------- 4. 버튼 3종류: 주요(민트) · 보조(크림+테두리) · 위험(빨간 글씨) ---------- */
+.primary-button, .secondary-button, .send-button, .trip-actions button, .trip-actions a,
+.route-links a, .quick-add, .checklist-form button, .day-actions button {
+  min-height: 38px; padding: 7px 18px; border: 2px solid transparent; border-radius: 999px;
+  font-family: var(--font-display); font-size: .9rem; line-height: 1.2;
+  box-shadow: none; transition: transform .08s, background .15s, border-color .15s;
+}
+/* 주요: 화면에서 가장 중요한 한 가지 행동 */
+.primary-button, .send-button, .checklist-form button, .trip-card .trip-actions button[data-action='open'] {
+  background: var(--primary); color: var(--primary-text); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .08);
+}
+/* 보조: 나머지 일반 버튼 */
+.secondary-button, .trip-actions button, .trip-actions a, .route-links a, .quick-add, .day-actions .secondary-button {
+  background: var(--card-2); color: var(--text); border-color: var(--line);
+}
+.secondary-button:hover:not(:disabled), .trip-actions button:hover:not(:disabled), .trip-actions a:hover,
+.route-links a:hover, .quick-add:hover { border-color: var(--primary); background: var(--card-2); filter: none; }
+.primary-button:hover:not(:disabled), .send-button:hover:not(:disabled), .checklist-form button:hover { filter: brightness(1.04); }
+/* 위험: 삭제처럼 되돌리기 어려운 행동 */
+.danger-button, .trip-actions .danger-button, .secondary-button.danger-button {
+  background: transparent !important; color: var(--error) !important;
+  border-color: color-mix(in srgb, var(--error) 35%, transparent) !important;
+}
+.danger-button:hover:not(:disabled) { background: var(--danger-bg) !important; }
+/* 표·티켓 안의 작은 버튼은 크기만 줄임 (종류 규칙은 같음) */
+.schedule-table .trip-actions button, .schedule-table .trip-actions a,
+.ticket-stub .trip-actions button, .doc-list button, .reservation-card .secondary-button {
+  min-height: 28px; padding: 2px 12px; font-size: .78rem; border-width: 1.5px;
+}
+/* 알약 칩은 추천 요청·상태 표시에만. 지도·길찾기는 글자 링크로 */
+.map-link, .map-link.route {
+  padding: 0; border-radius: 0; background: none; color: var(--success);
+  text-decoration: underline; text-underline-offset: 2px; font-size: .74rem;
+}
+[data-theme='dark'] .map-link { color: #8fc4f0; }

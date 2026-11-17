@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P의 여행수첩 · 하고 싶은 건 내가, 계획은 AI와</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/island.css">
+  <link rel="stylesheet" href="/static/css/tidy.css"><!-- 정리 레이어: 이 줄을 지우면 이전 디자인 -->
+  <script type="module" src="/static/js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <div class="app">
+    <aside class="side">
+      <a class="side-mark" href="#home" aria-label="P의 여행수첩 홈"><svg aria-hidden="true"><use href="/static/island.svg#leaf"></use></svg></a>
+      <nav class="side-nav" aria-label="메인 메뉴">
+        <a class="nav-item active" href="#home" data-nav="home" aria-current="page"><img src="/static/img/icon-globe.png" alt="" aria-hidden="true"><span>홈</span></a>
+        <a class="nav-item" href="#trips" data-nav="trips"><img src="/static/img/icon-passport.png" alt="" aria-hidden="true"><span>내 여행</span></a>
+      </nav>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="top">
+        <a class="logo" href="#home" aria-label="P의 여행수첩">
+          <span class="logo-small" aria-hidden="true"><b>P</b><b>의</b></span>
+          <span class="logo-big" aria-hidden="true"><b>여</b><b>행</b><b>수</b><b>첩</b></span>
+          <svg class="logo-leaf" aria-hidden="true"><use href="/static/island.svg#leaf"></use></svg>
+        </a>
+        <button class="theme-chip" id="theme-toggle" type="button" aria-label="다크 모드로 전환" title="낮/밤 바꾸기"><span class="theme-label" aria-hidden="true">🌙</span></button>
+      </header>
+
+      <main id="main">
+        <div id="home-page" class="home">
+          <section class="card intro-card" aria-labelledby="welcome-title">
+            <div class="intro-text">
+              <p class="eyebrow">WELCOME TO P의 여행수첩</p>
+              <h1 id="welcome-title">계획보다 일단 떠나는<br>당신을 위한 여행 다이어리.</h1>
+              <p class="hero-description">하고 싶은 일만 말하면, 장소·동선·시간은 너굴이 정리해 드려요.</p>
+            </div>
+            <img class="mascot intro-mascot" src="/static/img/twin-flag.png" alt="" aria-hidden="true">
+          </section>
+
+          <section class="card clock-card" aria-labelledby="clock-title">
+            <h2 id="clock-title" class="sr-only">오늘 날짜와 시각</h2>
+            <div class="clock-left">
+              <div class="clock-face"><time class="clock-time" id="today-clock"></time><p class="clock-date" id="today-date"></p></div>
+              <p class="news-bar"><img src="/static/img/twin-wave.png" alt="" aria-hidden="true"><span id="health-message">로컬 서버에 연결하는 중…</span></p>
+            </div>
+            <div class="calendar" id="calendar" aria-label="이번 달 달력"></div>
+          </section>
+
+          <section class="card howto-card" aria-labelledby="how-title">
+            <div class="card-head"><img class="head-icon" src="/static/img/icon-note.png" alt="" aria-hidden="true"><h2 id="how-title">이렇게 써요</h2></div>
+            <ol class="steps">
+              <li class="pop-wrap" tabindex="0"><img src="/static/img/villager-4.png" alt="" aria-hidden="true"><div><h3>01. 하고 싶은 말부터</h3><p class="pop" role="note">“점심 먹고 근처에서 커피 마실래.”<br>정리되지 않은 말도 괜찮아요.</p></div></li>
+              <li class="pop-wrap" tabindex="0"><img src="/static/img/villager-5.png" alt="" aria-hidden="true"><div><h3>02. 하루의 일정 잡기</h3><p class="pop" role="note">예약과 취향을 참고해<br>장소·순서·시간을 초안으로 제안해요.</p></div></li>
+              <li class="pop-wrap" tabindex="0"><img src="/static/img/villager-6.png" alt="" aria-hidden="true"><div><h3>03. 마음에 들면 담기</h3><p class="pop" role="note">초안을 확인하고 내 일정표에 저장.<br>바꾸고 싶은 건 직접 수정해요.</p></div></li>
+              <li class="pop-wrap" tabindex="0"><img src="/static/img/villager-10.png" alt="" aria-hidden="true"><div><h3>04. 여행 중엔 가계부</h3><p class="pop" role="note">쓴 돈을 적으면<br>예산과 함께 한눈에 정리해 드려요.</p></div></li>
+            </ol>
+            <div class="cta"><div class="cta-text"><p>어디로, 언제 떠날지만 정하면 시작할 수 있어요.</p><div class="pop-wrap note-wrap" tabindex="0"><span class="pop-label">항공권·숙소 예약 안내</span><p class="intro-note pop" role="note">항공권·숙소 예약 기능은 아직 제공하지 않아요.<br>직접 예약한 항공편과 숙소 정보를 여행에 입력해 주시면 일정에 반영해 드려요.</p></div></div><button class="primary-button" type="button" data-new-trip>새 여행 만들기</button></div>
+          </section>
+
+          <div class="home-right">
+            <section class="card guide-card" aria-labelledby="spotlight-title">
+              <div class="card-head"><img class="head-icon" src="/static/img/icon-map.png" alt="" aria-hidden="true"><h2 id="spotlight-title">가장 가까운 여행</h2></div>
+              <div id="trip-spotlight" class="trip-spotlight"><p class="muted">여행을 불러오는 중…</p></div>
+            </section>
+            <div class="home-pair">
+            <section class="card" aria-labelledby="quick-title">
+              <div class="card-head"><img class="head-icon" src="/static/img/icon-passport.png" alt="" aria-hidden="true"><h2 id="quick-title">내 여행</h2><a class="more-link" href="#trips">전체 보기 →</a></div>
+              <ul class="quick-links" id="quick-links"><li class="muted">불러오는 중…</li></ul>
+            </section>
+            <section class="card" id="checklist-card" aria-labelledby="checklist-title">
+              <div class="card-head"><img class="head-icon" src="/static/img/icon-flower.png" alt="" aria-hidden="true"><h2 id="checklist-title">챙길 것</h2></div>
+              <ul id="checklist" class="checklist"></ul>
+              <form id="checklist-form" class="checklist-form"><label class="sr-only" for="checklist-input">체크리스트 항목 추가</label><input id="checklist-input" maxlength="60" placeholder="챙길 것 추가"><button type="submit" aria-label="항목 추가">추가</button></form>
+              <p class="note-hint">이 브라우저에만 저장돼요</p>
+            </section>
+            </div>
+          </div>
+        </div>
+
+        <div id="trips-page" hidden>
+          <section class="card" id="my-trips" aria-labelledby="trips-title">
+            <div class="card-head"><img class="head-icon" src="/static/img/icon-passport.png" alt="" aria-hidden="true"><h2 id="trips-title">내가 펼쳐볼 여행들 <span id="trip-count" class="count"></span></h2></div>
+            <div class="trips-toolbar"><p id="trips-status" role="status">여행을 불러오는 중…</p><div class="toolbar-actions"><button class="secondary-button" type="button" id="reload-trips">목록 새로고침</button><button class="primary-button" type="button" data-new-trip>새 여행 만들기</button></div></div>
+            <section class="empty-card" id="trip-empty" aria-labelledby="empty-title" hidden><img class="empty-villager" src="/static/img/villager-3.png" alt="" aria-hidden="true"><h3 id="empty-title">완벽한 계획 없이 시작해도 괜찮아요</h3><p>어디로, 언제 떠날지만 정하고 첫 티켓을 만들어보세요.</p><button class="primary-button" type="button" data-new-trip>첫 여행 만들기</button></section>
+            <section class="ticket-list" id="trip-list" aria-label="저장된 여행"></section>
+          </section>
+          <section class="card" aria-labelledby="budget-title">
+            <div class="card-head"><img class="head-icon" src="/static/img/bell-bag.png" alt="" aria-hidden="true"><h2 id="budget-title">여행 예산 한눈에</h2><span class="chip">예약 비용 / 총예산</span></div>
+            <div id="budget-chart" class="budget-chart"><p class="muted">여행을 불러오는 중…</p></div>
+          </section>
+        </div>
+
+        <div id="travel-page" hidden>
+          <section class="card trip-detail" id="trip-detail" aria-labelledby="detail-title" hidden>
+            <div class="workspace-heading">
+              <div class="title-wrap"><img class="head-icon big" src="/static/img/icon-passport.png" alt="" aria-hidden="true"><div><span class="eyebrow">MY TRAVEL DIARY</span><h2 id="detail-title" tabindex="-1"></h2></div></div>
+              <div class="trip-actions"><button id="back-to-trips" type="button">← 내 여행</button><button id="edit-current-trip" type="button">여행 정보 수정</button></div>
+            </div>
+            <div class="trip-summary-strip"><span id="summary-destination"></span><span id="summary-dates"></span><span id="summary-travelers"></span><span id="summary-budget"></span></div>
+            <details class="summary-more"><summary>예약·여행 조건 자세히 보기</summary>
+              <dl><dt>여행지</dt><dd id="detail-destination"></dd><dt>가는 방법</dt><dd id="detail-access"></dd><dt>여행 기간</dt><dd id="detail-dates"></dd><dt>인원</dt><dd id="detail-travelers"></dd><dt>총예산</dt><dd id="detail-budget"></dd><dt>여행 스타일</dt><dd id="detail-style"></dd><dt>꼭 갈 곳</dt><dd id="detail-places"></dd><dt>예약 비용</dt><dd id="detail-reserved"></dd><dt>남은 계획 예산</dt><dd id="detail-remaining"></dd></dl>
+              <p id="detail-budget-note"></p>
+              <div class="reservation-columns"><div><h3 id="detail-transport-title">항공편</h3><ul class="reservation-summary" id="detail-flights"></ul></div><div><h3>숙소</h3><ul class="reservation-summary" id="detail-stays"></ul></div></div>
+              <p>아래 탭에서 일정 짜기, 가계부, 여행 자료를 이용할 수 있습니다.</p>
+            </details>
+          </section>
+
+          <div class="tabs" role="tablist" aria-label="여행 메뉴">
+            <button type="button" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="true" data-tab="plan"><img src="/static/img/icon-map.png" alt="" aria-hidden="true">일정 짜기</button>
+            <button type="button" role="tab" id="tab-ledger" aria-controls="panel-ledger" aria-selected="false" tabindex="-1" data-tab="ledger"><img src="/static/img/bell-bag.png" alt="" aria-hidden="true">가계부</button>
+            <button type="button" role="tab" id="tab-docs" aria-controls="panel-docs" aria-selected="false" tabindex="-1" data-tab="docs"><img src="/static/img/icon-camera.png" alt="" aria-hidden="true">여행 자료</button>
+          </div>
+
+          <div id="panel-plan" role="tabpanel" aria-labelledby="tab-plan">
+          <section id="itinerary-section" class="itinerary-section" aria-labelledby="itinerary-title" hidden>
+            <h2 id="itinerary-title" class="sr-only">여행 일정 짜기</h2>
+            <div class="workspace-columns">
+              <section class="card ai-planner chat-panel" aria-labelledby="ai-title">
+                <div class="chat-head"><img class="mascot mascot-chat" src="/static/img/twin-flag.png" alt="" aria-hidden="true"><div><p class="eyebrow">여행 플래너 너굴</p><h3 id="ai-title">어떤 하루를 보내고 싶어요?</h3></div>
+                  <details class="hint-details"><summary>안내</summary><p class="field-hint">일정표에서 고른 일차, 시작·종료 시각, 이동 수단과 저장된 항공편·숙소·예산을 참고합니다. 장소는 카카오 로컬 검색에서 블로그 언급이 가장 많은 곳 하나를 추천하고, 카카오에 없는 곳은 OpenStreetMap으로 보완합니다. 도보 시간·영업·가격은 미검증 추정입니다. 생성할 때 개인 OpenAI API 사용료가 발생합니다.</p></details></div>
+                <div id="planning-chat" class="planning-chat" role="log" aria-label="여행 계획 대화" aria-live="polite"></div>
+                <div class="prompt-chips" id="prompt-chips" role="group" aria-label="추천 요청 (누르면 입력창에 채워져요)"></div>
+                <div class="chat-conditions" role="group" aria-label="이 날 일정 조건">
+                  <label>시작<input id="ai-start" type="time" value="09:00" required></label>
+                  <label>종료<input id="ai-end" type="time" value="23:00" required></label>
+                  <label>차량<select id="route-mode"><option value="transit">차 없음 (대중교통)</option><option value="driving">차 있음 (자동차)</option></select></label>
+                </div>
+                <div class="composer">
+                  <label for="ai-request" class="sr-only">하고 싶은 걸 편하게 말해줘요</label>
+                  <textarea id="ai-request" rows="2" maxlength="6000" placeholder="하고 싶은 걸 편하게 말해줘요. 예: 숙소에 짐 맡기고 돼지국밥 먹고 바다 보고 싶어. (Enter 보내기, Shift+Enter 줄바꿈)"></textarea>
+                  <div class="composer-bar">
+                    <label class="composer-mode"><span class="sr-only">반영 방식</span><select id="ai-mode"><option value="auto">자동 (너굴이 판단)</option><option value="add">기존 일정에 추가</option><option value="replace">이 날 일정 다시 짜기</option></select></label>
+                    <span class="composer-target" id="ai-target"></span>
+                    <button type="button" class="send-button" id="ai-generate">보내기</button>
+                  </div>
+                </div>
+                <p class="field-hint" id="ai-status" role="status"></p>
+                <div id="ai-preview" class="draft-card" hidden>
+                  <p class="eyebrow">NEW DRAFT</p><h3 id="ai-summary"></h3><ul id="ai-assumptions" class="field-hint"></ul><p id="ai-total" class="field-hint"></p><div id="ai-stops"></div><div class="dialog-actions"><button type="button" id="ai-discard" class="secondary-button">초안 닫기</button><button type="button" id="ai-apply" class="primary-button" disabled>이 일정, 내 다이어리에 담기</button></div>
+                </div>
+              </section>
+
+              <div class="right-stack">
+                <section class="card schedule-panel" aria-label="확정된 일정표">
+                  <div class="card-head"><img class="head-icon" src="/static/img/icon-note.png" alt="" aria-hidden="true"><h3 class="schedule-title">일정표</h3><span class="chip" id="day-heading"></span></div>
+                  <div class="day-bar">
+                    <div class="day-tabs" id="day-tabs" role="group" aria-label="일정표 보기 선택"></div>
+                    <label class="sr-only">여행 날짜<input type="date" id="itinerary-day"></label>
+                    <div class="day-actions">
+                      <button class="secondary-button" type="button" id="export-image">이미지로 저장</button>
+                      <button class="secondary-button" type="button" id="reload-items">새로고침</button>
+                      <button class="primary-button" id="add-item" type="button">일정 추가</button>
+                    </div>
+                  </div>
+                  <p class="field-hint" id="itinerary-status" role="status"></p>
+                  <p class="empty-card" id="day-empty"><img class="empty-villager" src="/static/img/villager-7.png" alt="" aria-hidden="true">아직 비어 있는 하루예요. 너굴과 이야기하거나 직접 일정을 적어보세요.</p>
+                  <div class="schedule-table-wrap"><table class="schedule-table"><caption class="sr-only">확정 일정</caption><thead><tr><th scope="col">시간</th><th scope="col">일정</th><th scope="col">장소</th><th scope="col">비고</th><th scope="col">예상 비용</th><th scope="col">관리</th></tr></thead><tbody id="day-items"></tbody></table></div>
+                  <p class="day-total" id="day-total"></p>
+                </section>
+              </div>
+            </div>
+          </section>
+          </div>
+
+          <div id="panel-ledger" role="tabpanel" aria-labelledby="tab-ledger" hidden>
+            <div class="ledger-grid">
+              <section class="card ledger-summary" aria-labelledby="ledger-title">
+                <div class="card-head"><img class="head-icon" src="/static/img/bell-bag.png" alt="" aria-hidden="true"><h2 id="ledger-title">여행 가계부</h2><span class="chip">실제 지출</span></div>
+                <dl id="ledger-stats" class="ledger-stats"></dl>
+                <div class="ledger-meter-wrap"><p id="ledger-meter-label" class="field-hint"></p><div class="info-meter" id="ledger-meter" role="img" aria-label="예산 사용률"><i></i></div></div>
+                <h3 class="sub-title">분류별</h3><div id="ledger-categories" class="budget-chart"></div>
+                <h3 class="sub-title">날짜별</h3><ul id="ledger-days" class="ledger-days"></ul>
+              </section>
+
+              <section class="card" aria-labelledby="expense-form-title">
+                <div class="card-head"><img class="head-icon" src="/static/img/icon-note.png" alt="" aria-hidden="true"><h2 id="expense-form-title">지출 기록하기</h2></div>
+                <form id="expense-form" class="expense-form">
+                  <div class="date-fields"><div><label for="expense-date">날짜</label><input type="date" id="expense-date" required></div><div><label for="expense-amount">금액 (원)</label><input type="number" id="expense-amount" min="0" max="1000000000000" step="1" required placeholder="예: 12000"></div></div>
+                  <label for="expense-title">내용</label><input id="expense-title" maxlength="100" required placeholder="예: 돼지국밥 점심">
+                  <div class="date-fields"><div><label for="expense-category">분류</label><select id="expense-category"><option value="food">식비</option><option value="transport">교통</option><option value="stay">숙박</option><option value="shopping">쇼핑</option><option value="activity">관광·체험</option><option value="other">기타</option></select></div><div><label for="expense-payment">결제 수단</label><select id="expense-payment"><option value="card">카드</option><option value="cash">현금</option><option value="other">기타</option></select></div></div>
+                  <label for="expense-memo">메모</label><input id="expense-memo" maxlength="3000" placeholder="선택">
+                  <p class="form-error" id="expense-error" role="alert"></p>
+                  <div class="dialog-actions"><button type="button" class="secondary-button" id="expense-cancel" hidden>수정 취소</button><button type="submit" class="primary-button" id="expense-submit">기록하기</button></div>
+                </form>
+              </section>
+
+              <section class="card ledger-list" aria-labelledby="expense-list-title">
+                <div class="card-head"><img class="head-icon" src="/static/img/fruit-cherry.png" alt="" aria-hidden="true"><h2 id="expense-list-title">지출 내역</h2></div>
+                <p class="field-hint" id="ledger-status" role="status"></p>
+                <p class="empty-card" id="expense-empty"><img class="empty-villager" src="/static/img/villager-9.png" alt="" aria-hidden="true">아직 기록한 지출이 없어요. 여행하며 쓴 돈을 하나씩 적어보세요.</p>
+                <div class="schedule-table-wrap"><table class="schedule-table"><caption class="sr-only">지출 내역</caption><thead><tr><th scope="col">날짜</th><th scope="col">내용</th><th scope="col">금액</th><th scope="col">관리</th></tr></thead><tbody id="expense-items"></tbody></table></div>
+              </section>
+            </div>
+          </div>
+
+          <div id="panel-docs" role="tabpanel" aria-labelledby="tab-docs" hidden>
+            <div class="docs-grid">
+              <section class="card" aria-labelledby="docs-title">
+                <div class="card-head"><img class="head-icon" src="/static/img/icon-camera.png" alt="" aria-hidden="true"><h2 id="docs-title">여행 자료 보관함</h2></div>
+                <div class="docs-intro"><img class="mascot mascot-docs" src="/static/img/villager-1.png" alt="" aria-hidden="true">
+                  <p>예약 확인서, 가고 싶은 곳 메모, 블로그에서 모은 정보를 올려두면 일정을 짤 때 함께 참고할게요.</p></div>
+                <form id="doc-form" class="doc-form"><label for="doc-file">파일 선택 (PDF, Excel, CSV, TXT, Markdown, 이미지 · 8MB 이하)</label><input type="file" id="doc-file" accept=".pdf,.xlsx,.csv,.txt,.md,.markdown,.png,.jpg,.jpeg,.webp" required><button type="submit" class="primary-button" id="doc-upload">올리기</button></form>
+                <p class="field-hint">원본 파일은 저장하지 않고 읽어낸 글자만 이 컴퓨터의 DB에 보관합니다. 검색용 변환(임베딩)과 이미지 글자 읽기에 OpenAI 사용료가 조금 발생합니다.</p>
+                <p class="field-hint" id="doc-status" role="status"></p>
+                <ul id="doc-list" class="doc-list"></ul>
+              </section>
+              <section class="card" aria-labelledby="doc-search-title">
+                <div class="card-head"><img class="head-icon" src="/static/img/icon-bugfish.png" alt="" aria-hidden="true"><h2 id="doc-search-title">자료에서 찾아보기</h2></div>
+                <form id="doc-search-form" class="checklist-form"><label class="sr-only" for="doc-query">찾을 내용</label><input id="doc-query" maxlength="2000" placeholder="예: 숙소 체크인 시간, 렌터카 예약번호"><button type="submit">찾기</button></form>
+                <p class="field-hint" id="doc-search-status" role="status"></p>
+                <div id="doc-results" class="doc-results"></div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="credits">
+          <p><b>© 2026 sillverwater</b> · P의 여행수첩 기획·개발 · 개인 비상업적 로컬 사용 · 최종 수정 2026-11-17</p>
+          <p>지도·장소: 카카오맵·카카오 로컬 API © Kakao Corp. · 보조 장소 데이터 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors</p>
+          <p>캐릭터·일러스트 © Nintendo 「모여봐요 동물의 숲」 · 아이콘 © jisoupy · 글꼴 Asia신디나루M © AsiaSoft · 이미지·글꼴은 재배포하지 않습니다</p>
+        </div>
+        <p class="status" id="server-status" role="status">서버 연결 확인 중…</p>
+      </footer>
+    </div>
+  </div>
+
+  <dialog class="trip-dialog modal" id="trip-dialog" aria-labelledby="trip-form-title">
+    <form id="trip-form">
+      <div class="modal-head"><span class="name-tag">새 여행</span><button class="modal-close" type="button" data-close-for="trip-cancel" aria-label="닫기">×</button></div>
+      <div class="dialog-body">
+      <p class="eyebrow">A NEW JOURNEY</p>
+      <h2 id="trip-form-title">새 여행 만들기</h2>
+      <label for="trip-title">여행 이름</label><input id="trip-title" name="title" maxlength="100" required placeholder="예: 바다 보러 부산으로">
+      <label for="trip-destination">여행지</label><input id="trip-destination" name="destination" maxlength="100" required placeholder="예: 부산">
+      <fieldset class="choice-group"><legend>여행 구분</legend>
+        <label><input type="radio" name="trip-region" value="domestic" checked> 국내</label>
+        <label><input type="radio" name="trip-region" value="overseas"> 해외</label>
+      </fieldset>
+      <fieldset class="choice-group"><legend>여행지까지 가는 방법</legend>
+        <label><input type="radio" name="trip-access" value="flight" checked> 비행기</label>
+        <label><input type="radio" name="trip-access" value="train_bus"> 기차·버스</label>
+        <label><input type="radio" name="trip-access" value="car"> 자차</label>
+      </fieldset>
+      <label class="check-line"><input type="checkbox" id="trip-local-car"> 현지에서 렌터카·차량 이용</label>
+      <p class="field-hint" id="trip-access-hint"></p>
+      <div class="date-fields"><div><label for="trip-start">시작일</label><input type="date" id="trip-start" name="start_date" required></div><div><label for="trip-end">종료일</label><input type="date" id="trip-end" name="end_date" required></div></div>
+      <div class="date-fields"><div><label for="trip-travelers">여행 인원</label><input id="trip-travelers" type="number" min="1" max="100" step="1" value="1" required></div><div><label for="trip-budget">총예산 (전체 인원 합계·원)</label><input id="trip-budget" type="number" min="0" max="1000000000000" step="1" value="0" required></div></div>
+      <p class="field-hint">예산 0원은 미설정으로 표시됩니다. 이번 단계의 금액은 모두 원화로 입력해주세요.</p>
+      <label for="trip-style">여행 스타일</label><textarea id="trip-style" rows="2" maxlength="3000" placeholder="예: 여유롭게, 카페와 바다 위주, 걷는 시간은 짧게"></textarea>
+      <label for="trip-places">꼭 가고 싶은 곳</label><textarea id="trip-places" rows="3" placeholder="한 줄에 한 장소씩 입력해주세요 (최대 100곳)"></textarea>
+      <details class="extract-box"><summary>예약 안내문으로 자동 입력</summary>
+        <p class="field-hint">확인 메일이나 예약 내역을 붙여넣거나 PDF·이미지를 선택하면 아래 항공편·숙소 칸을 채워드려요. 저장 전에 꼭 원문과 비교해주세요. OpenAI 사용료가 발생합니다.</p>
+        <label for="extract-text">안내문 붙여넣기</label><textarea id="extract-text" rows="4" maxlength="30000" placeholder="예: [예약 확인] 대한항공 KE1101 김포 → 김해 2026-12-01 09:00 출발 ..."></textarea>
+        <label for="extract-file">또는 파일 선택</label><input type="file" id="extract-file" accept=".pdf,.txt,.md,.png,.jpg,.jpeg,.webp">
+        <button type="button" class="secondary-button" id="extract-run">안내문에서 가져오기</button>
+        <p class="field-hint" id="extract-status" role="status"></p><ul id="extract-notes" class="field-hint extract-notes"></ul>
+      </details>
+      <section class="reservation-section" id="flight-section"><h3>항공편</h3><p class="field-hint">가는 편·오는 편·경유편을 각각 추가하세요. 현지 시간과 IANA 시간대를 입력합니다. 항공편 번호 자동 조회는 아직 제공하지 않습니다.</p><div id="flight-list"></div><button id="add-flight" class="secondary-button" type="button">항공편 추가</button></section>
+      <section class="reservation-section" id="ground-section" hidden><h3>기차·버스</h3><p class="field-hint">가는 편과 오는 편을 각각 추가하세요.
+출발 시각을 넣으면 일정표에 이동 일정으로 자동 추가돼요.</p><div id="ground-list"></div><div class="toolbar-actions"><button id="add-train" class="secondary-button" type="button">기차 추가</button><button id="add-bus" class="secondary-button" type="button">버스 추가</button></div></section>
+      <section class="reservation-section" id="car-section" hidden><h3>자차 이동</h3><p class="field-hint">출발 위치와 도착 위치를 적어주세요.
+출발 시각을 넣으면 일정표에 이동 일정으로 자동 추가돼요.</p><div id="car-list"></div><button id="add-car" class="secondary-button" type="button">자차 이동 추가</button></section>
+      <section class="reservation-section"><h3>숙소</h3><p class="field-hint">여행 기간 안의 체크인·아웃 현지 날짜와 시간을 입력하세요. 여러 숙소를 등록할 수 있습니다.</p><div id="stay-list"></div><button id="add-stay" class="secondary-button" type="button">숙소 추가</button></section>
+      <p class="form-error" id="trip-form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="secondary-button" id="trip-cancel" type="button">취소</button><button class="primary-button" type="submit">저장하기</button></div>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="trip-dialog modal" id="item-dialog" aria-labelledby="item-form-title"><form id="item-form">
+    <div class="modal-head"><span class="name-tag">일정</span><button class="modal-close" type="button" data-close-for="item-cancel" aria-label="닫기">×</button></div>
+    <div class="dialog-body">
+    <h2 id="item-form-title">일정 추가</h2>
+    <label for="item-reservation">예약 정보에서 가져오기</label><select id="item-reservation"><option value="">직접 입력</option></select>
+    <p class="field-hint">예약 정보를 복사해 일정으로 저장합니다. 원본 예약을 수정해도 저장한 일정은 자동 변경되지 않습니다. 항공 일정의 시간은 각 공항 현지 시각입니다.</p>
+    <div class="date-fields"><div><label for="item-date">날짜</label><input type="date" id="item-date" required></div><div><label for="item-time">현지 시간</label><input type="time" id="item-time" required></div></div>
+    <label for="item-title">일정 이름</label><input id="item-title" maxlength="100" required placeholder="예: 나리타 공항 도착">
+    <label for="item-location">지도 검색용 장소·주소</label><input id="item-location" maxlength="3000" placeholder="예: 호텔 이름, 도로명 주소, 도시, 국가">
+    <div class="date-fields"><div><label for="item-category">분류</label><select id="item-category"><option value="visit">관광</option><option value="flight">항공</option><option value="stay">숙소</option><option value="food">식사</option><option value="transfer">이동</option><option value="other">기타</option></select></div><div><label for="item-cost">예상 비용 (원)</label><input id="item-cost" type="number" min="0" max="1000000000000" step="1" value="0" required></div></div>
+    <label for="item-notes">메모</label><textarea id="item-notes" maxlength="3000" rows="2"></textarea>
+    <p id="item-error" class="form-error" role="alert"></p><div class="dialog-actions"><button id="item-cancel" type="button" class="secondary-button">취소</button><button class="primary-button" type="submit">저장하기</button></div>
+    </div>
+  </form></dialog>
+
+  <dialog class="modal confirm-dialog" id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+    <form method="dialog">
+      <div class="confirm-body">
+        <img class="mascot mascot-confirm" src="/static/img/twin-wave.png" alt="" aria-hidden="true">
+        <div class="talk-bubble"><span class="name-tag" id="confirm-title">너굴</span><p id="confirm-message"></p></div>
+      </div>
+      <div class="dialog-actions"><button class="secondary-button" value="no" id="confirm-no">아니요</button><button class="primary-button" value="yes">네</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

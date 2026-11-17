@@ -1,0 +1,22 @@
+# 개인 설정·키 (절대 공유 금지)
+.env
+.env.*
+!.env.example
+
+# 내 여행 데이터 (DB)
+data/
+data-*/
+*.db
+
+# 파이썬 실행 환경·캐시
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+
+# 재배포 불가 자료 (개인 보관용)
+# - 상용 글꼴 Asia신디나루M
+frontend/fonts/AsiaSindinaruM.ttf
+# - 「모여봐요 동물의 숲」 캐릭터·일러스트, ACNH 아이콘
+frontend/img/
