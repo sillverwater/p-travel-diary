@@ -283,7 +283,7 @@ python run.py
 ## 9. 폴더 구조
 
 ```
-Project/
+p-travel-diary/
 ├─ run.py              # 실행 파일
 ├─ requirements.txt    # 필요한 파이썬 패키지
 ├─ .env.example        # 설정 예시 (복사해서 .env로 사용)
@@ -292,6 +292,12 @@ Project/
 │  ├─ routers/         # 여행·일정·AI·지도·가계부·자료 API
 │  └─ services/        # 카카오·OpenAI·길찾기·자료 처리
 ├─ frontend/           # 화면 (HTML · CSS · JavaScript)
+│  ├─ css/             # island.css(기본), tidy.css(정리 레이어)
+│  ├─ js/              # 화면 기능별 모듈
+│  ├─ fonts/           # 주아·고운돋움 (OFL)
+│  ├─ img-free/        # 공유용 기본 이미지 (OpenMoji 아이콘, 직접 그린 타일·배경)
+│  └─ img/             # (선택) 내 개인 이미지. 있으면 img-free보다 우선, GitHub에 올라가지 않음
+├─ docs/screenshots/   # README 화면 캡처
 └─ data/               # 내 데이터 (실행하면 자동 생성, 공유 금지)
 ```
 
@@ -308,5 +314,9 @@ Project/
 
 ### 이미지 바꾸기
 `frontend/img/` 폴더를 만들고 [`frontend/img-free/`](frontend/img-free/)와 **같은 이름**으로 그림을 넣으면 그 그림이 우선 사용돼요(서버 재시작 필요 없음, 새로고침만).
-`frontend/img/`는 `.gitignore`에 들어 있어서 GitHub에 올라가지 않아요. 저작권이 있는 그림은 이 폴더에만 두세요.
+파일 목록과 쓰이는 곳은 [`frontend/img-free/CREDITS.md`](frontend/img-free/CREDITS.md)에 있어요.
+
+- 저작권이 있는 그림은 **`frontend/img/`에만** 두세요. `.gitignore`가 `img`로 시작하는 폴더(`img`, `img_off`, `img-backup` 등)를 모두 제외해서 GitHub에 올라가지 않아요. 공유용 `img-free`만 예외예요.
+- 기본 이미지로 잠깐 보고 싶으면 `frontend/img`를 `frontend/img_off`처럼 이름만 바꾸고 새로고침하세요. 다시 `img`로 돌리면 원래 그림으로 돌아와요.
+- 커밋 전에는 `git status`로 올라갈 파일 목록에 개인 이미지가 없는지 한 번 확인하세요.
 - AI 일정 추천은 OpenAI 모델이 만든 초안이며, 장소·영업·가격·교통비 정보는 사실과 다를 수 있어요.
