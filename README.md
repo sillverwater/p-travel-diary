@@ -254,7 +254,7 @@ python run.py
 | 장소가 엉뚱하거나 "OpenStreetMap" 출처만 나옴 | 카카오 키 확인 → 진단 주소에서 `ok: true`인지 확인 → 카카오맵 사용 설정 ON 확인 |
 | 진단에서 `http_status: 401/403` | REST API 키가 맞는지, 카카오맵 사용 설정을 켰는지 확인 |
 | 화면이 예전 모습 그대로 | 브라우저에서 `Ctrl + Shift + R` (강력 새로고침) |
-| 그림이 동물 이모지로 보임 | 정상이에요. 공유본은 무료 이미지(OpenMoji)를 써요. 아래 '이미지 바꾸기' 참고 |
+| 그림이 README 캡처와 다르게 보임 | 정상이에요. 공유본은 캐릭터 대신 무료 아이콘(여행가방·달력 등)을 써요. 아래 '이미지 바꾸기' 참고 |
 
 ---
 
@@ -303,7 +303,7 @@ Project/
 - 장소 검색·지도: 카카오 로컬 API · 카카오맵 © Kakao Corp.
 - 보조 장소 데이터: © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL)
 - 글꼴: 주아체(Jua), 고운돋움 — SIL Open Font License 1.1 (`frontend/fonts/OFL-*.txt`)
-- 기본 아이콘·동물 캐릭터: [OpenMoji](https://openmoji.org) — CC BY-SA 4.0. 타일·배경은 직접 그린 이미지예요. 자세한 출처는 [`frontend/img-free/CREDITS.md`](frontend/img-free/CREDITS.md)
+- 기본 아이콘: [OpenMoji](https://openmoji.org) — CC BY-SA 4.0 · 타일·배경: 직접 그린 이미지. 자세한 출처는 [`frontend/img-free/CREDITS.md`](frontend/img-free/CREDITS.md)
 - README의 화면 캡처는 만든 사람의 개인 화면이라 「모여봐요 동물의 숲」 캐릭터(© Nintendo)가 보여요. 이 이미지들과 ACNH 아이콘(© jisoupy), Asia신디나루M 글꼴(© AsiaSoft)은 **저장소에 포함하지 않았어요.** 글꼴은 주아체로 대신 보여요.
 
 ### 이미지 바꾸기
