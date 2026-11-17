@@ -1,9 +1,10 @@
 """Local web UI and persistent travel management API."""
 
+import re
 from contextlib import asynccontextmanager
 from datetime import datetime
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -72,6 +73,21 @@ app.include_router(planner_router)
 app.include_router(maps_router)
 app.include_router(expenses_router)
 app.include_router(documents_router)
+
+IMAGE_NAME = re.compile(r"^[A-Za-z0-9_.-]+\.(png|jpg|jpeg|webp|svg)$")
+
+
+@app.get("/static/img/{name}", include_in_schema=False)
+def image(name: str):
+    """Personal images in frontend/img (not shared, e.g. 동물의 숲) win; otherwise the free set in frontend/img-free."""
+    if not IMAGE_NAME.match(name):
+        raise HTTPException(404)
+    for folder in (FRONTEND_DIR / "img", FRONTEND_DIR / "img-free"):
+        path = folder / name
+        if path.is_file():
+            return FileResponse(path)
+    raise HTTPException(404)
+
 
 # Only frontend assets are public. Never mount the project root or data folder.
 app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
