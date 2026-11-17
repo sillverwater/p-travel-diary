@@ -80,23 +80,24 @@ flowchart LR
 
 | 준비물 | 비용 | 용도 |
 |---|---|---|
-| Python 3.11 이상 | 무료 | 프로그램 실행 |
+| Anaconda (또는 Miniconda) | 무료 | 파이썬 실행 환경 만들기 |
 | 카카오 REST API 키 | 무료 (하루 한도 넉넉함) | 장소 검색, 블로그 언급 수, 길찾기·택시비 |
 | OpenAI API 키 | **유료** (사용한 만큼) | AI 일정 짜기, 안내문 읽기, 자료 검색 |
 
 > OpenAI 키가 없어도 여행 만들기, 일정 직접 입력, 가계부는 쓸 수 있어요. AI 기능만 안 돼요.
 
-### Python 설치 확인
+### Anaconda 설치
 
-터미널(Windows는 PowerShell)에서:
-
-```bash
-python --version
-```
-
-`Python 3.11.x` 이상이 나오면 됩니다.
-없으면 [python.org](https://www.python.org/downloads/)에서 설치하세요.
-Windows는 설치 첫 화면에서 **"Add python.exe to PATH"를 꼭 체크**하세요.
+1. [Anaconda 다운로드](https://www.anaconda.com/download) 페이지에서 내 운영체제용 설치 파일을 받아 설치합니다.
+   - 가볍게 쓰고 싶다면 [Miniconda](https://docs.anaconda.com/miniconda/)도 똑같이 쓸 수 있어요.
+   - Windows 설치 중 옵션은 기본값 그대로 두면 됩니다.
+2. 설치 확인
+   - Windows: 시작 메뉴에서 **Anaconda Prompt**를 엽니다.
+   - macOS / Linux: 터미널을 새로 엽니다.
+   ```bash
+   conda --version
+   ```
+   `conda 24.x.x`처럼 버전이 나오면 준비 끝이에요.
 
 ---
 
@@ -132,40 +133,48 @@ Windows는 설치 첫 화면에서 **"Add python.exe to PATH"를 꼭 체크**하
 
 ## 3. 설치하기
 
-받은 `Project` 폴더(압축을 풀었다면 그 폴더)에서 터미널을 엽니다.
+아래 명령은 **Anaconda Prompt**(Windows) 또는 **터미널**(macOS / Linux)에서 차례로 실행합니다.
 
-### Windows (PowerShell)
-
-```powershell
-cd 경로\Project
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-copy .env.example .env
-notepad .env
-```
-
-> `Activate.ps1` 실행이 막히면, 한 번만 아래를 실행한 뒤 다시 시도하세요.
-> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
-
-### macOS / Linux
+### 3-1. 프로젝트 받기
 
 ```bash
-cd 경로/Project
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
+git clone https://github.com/sillverwater/p-travel-diary.git
+cd p-travel-diary
+```
+
+> git이 없다면 GitHub 페이지의 **Code → Download ZIP**으로 받아 압축을 풀고, `cd 압축푼경로\p-travel-diary`로 이동하세요.
+
+### 3-2. conda 가상환경 만들기 (한 번만)
+
+```bash
+conda create -n travel python=3.12 -y
+conda activate travel
+```
+
+- `travel`은 환경 이름이에요. 다른 이름을 써도 됩니다.
+- 프롬프트 맨 앞이 `(base)`에서 **`(travel)`** 로 바뀌면 켜진 거예요.
+
+### 3-3. 필요한 패키지 설치
+
+```bash
 pip install -r requirements.txt
+```
+
+### 3-4. 설정 파일 만들기
+
+```bash
+# Windows (Anaconda Prompt)
+copy .env.example .env
+notepad .env
+
+# macOS / Linux
 cp .env.example .env
 nano .env        # 또는 원하는 편집기로 열기
 ```
 
-> conda를 쓴다면 `conda create -n travel python=3.12` → `conda activate travel` → `pip install -r requirements.txt`로 대신해도 돼요.
-
 ### `.env` 채우기
 
-메모장 등으로 연 `.env` 파일에서 두 줄을 채우고 저장합니다.
+열린 `.env` 파일에서 두 줄을 채우고 저장합니다.
 
 ```dotenv
 OPENAI_API_KEY=sk-...본인 키...
@@ -179,7 +188,7 @@ KAKAO_REST_API_KEY=...본인 카카오 REST API 키...
 
 ## 4. 실행하기
 
-가상환경이 켜진 상태에서(프롬프트 앞에 `(.venv)`가 보이면 켜진 것):
+conda 환경이 켜진 상태에서(프롬프트 앞에 `(travel)`이 보이면 켜진 것):
 
 ```bash
 python run.py
@@ -188,7 +197,7 @@ python run.py
 터미널에 `P의 여행수첩: http://127.0.0.1:8000`이 나오면 브라우저에서 **http://127.0.0.1:8000** 을 엽니다.
 
 - 끄기: 터미널에서 `Ctrl + C`
-- 다음에 다시 켤 때: 폴더로 이동 → 가상환경 켜기(`.\.venv\Scripts\Activate.ps1` 또는 `source .venv/bin/activate`) → `python run.py`
+- 다음에 다시 켤 때: Anaconda Prompt(또는 터미널) 열기 → `conda activate travel` → 프로젝트 폴더로 `cd` → `python run.py`
 - `.env`를 고쳤다면 서버를 껐다가 다시 켜야 반영돼요.
 
 ### 키가 잘 들어갔는지 확인
@@ -237,8 +246,8 @@ python run.py
 
 | 증상 | 해결 |
 |---|---|
-| `python`을 찾을 수 없음 | Python을 설치하고 PATH 추가 체크. macOS/Linux는 `python3`로 실행 |
-| `No module named fastapi` 등 | 가상환경을 켜고 `pip install -r requirements.txt` 다시 실행 |
+| `conda`를 찾을 수 없음 | Windows는 일반 명령 프롬프트가 아니라 **Anaconda Prompt**에서 실행. macOS/Linux는 설치 후 터미널을 새로 열기 |
+| `No module named fastapi` 등 | `conda activate travel`로 환경을 켠 뒤 `pip install -r requirements.txt` 다시 실행 |
 | `address already in use` / 포트 사용 중 | `.env`의 `APP_PORT`를 `8001`로 바꾸고 `http://127.0.0.1:8001` 접속 |
 | "OPENAI_API_KEY를 입력하고…" | `.env`에 키 입력 → 저장 → 서버 재시작 |
 | "OpenAI 사용 한도 또는 잔액을 확인해주세요" | OpenAI Billing에서 크레딧 충전 |
@@ -261,7 +270,7 @@ python run.py
    - Ubuntu/WSL: `curl -L -o cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared.deb`
 3. **터미널 1: 공개 종료 시각과 체험용 DB를 정해서 서버 실행**
    - macOS/Linux: `PUBLIC_UNTIL=2026-11-18T09:00 APP_DATA_DIR=data-public python run.py`
-   - Windows PowerShell: `$env:PUBLIC_UNTIL="2026-11-18T09:00"; $env:APP_DATA_DIR="data-public"; python run.py`
+   - Windows (Anaconda Prompt): `set "PUBLIC_UNTIL=2026-11-18T09:00" && set "APP_DATA_DIR=data-public" && python run.py`
 4. **터미널 2: 임시 주소 만들기** → `cloudflared tunnel --url http://127.0.0.1:8000`
    - 출력에 나오는 `https://….trycloudflare.com` 주소를 공유하면 돼요.
 5. **끝내기**: 두 터미널에서 `Ctrl + C`. 깜빡해도 `PUBLIC_UNTIL` 시각이 지나면 "체험 기간이 끝났어요" 화면만 보여요.
