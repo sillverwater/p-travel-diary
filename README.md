@@ -254,7 +254,7 @@ python run.py
 | 장소가 엉뚱하거나 "OpenStreetMap" 출처만 나옴 | 카카오 키 확인 → 진단 주소에서 `ok: true`인지 확인 → 카카오맵 사용 설정 ON 확인 |
 | 진단에서 `http_status: 401/403` | REST API 키가 맞는지, 카카오맵 사용 설정을 켰는지 확인 |
 | 화면이 예전 모습 그대로 | 브라우저에서 `Ctrl + Shift + R` (강력 새로고침) |
-| 그림이 README 캡처와 다르게 보임 | 정상이에요. 공유본은 캐릭터 대신 무료 아이콘(여행가방·달력 등)을 써요. 아래 '이미지 바꾸기' 참고 |
+| 그림을 내 것으로 바꾸고 싶음 | 아래 '10. 이미지 바꾸기' 참고 |
 
 ---
 
@@ -303,20 +303,38 @@ p-travel-diary/
 
 ---
 
-## 10. 저작권 · 라이선스
+## 10. 이미지 바꾸기
 
-- **P의 여행수첩** 기획·개발 © 2026 sillverwater.
-- 장소 검색·지도: 카카오 로컬 API · 카카오맵 © Kakao Corp.
-- 보조 장소 데이터: © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL)
-- 글꼴: 주아체(Jua), 고운돋움 — SIL Open Font License 1.1 (`frontend/fonts/OFL-*.txt`)
-- 기본 아이콘: [OpenMoji](https://openmoji.org) — CC BY-SA 4.0 · 타일·배경: 직접 그린 이미지. 자세한 출처는 [`frontend/img-free/CREDITS.md`](frontend/img-free/CREDITS.md)
-- README의 화면 캡처는 만든 사람의 개인 화면이라 「모여봐요 동물의 숲」 캐릭터(© Nintendo)가 보여요. 이 이미지들과 ACNH 아이콘(© jisoupy), Asia신디나루M 글꼴(© AsiaSoft)은 **저장소에 포함하지 않았어요.** 글꼴은 주아체로 대신 보여요.
+기본 이미지(무료 아이콘·배경)가 들어 있어서 **그대로 써도 돼요.** 내 그림으로 꾸미고 싶다면:
 
-### 이미지 바꾸기
-`frontend/img/` 폴더를 만들고 [`frontend/img-free/`](frontend/img-free/)와 **같은 이름**으로 그림을 넣으면 그 그림이 우선 사용돼요(서버 재시작 필요 없음, 새로고침만).
-파일 목록과 쓰이는 곳은 [`frontend/img-free/CREDITS.md`](frontend/img-free/CREDITS.md)에 있어요.
+1. `frontend/img/` 폴더를 새로 만듭니다.
+2. [`frontend/img-free/`](frontend/img-free/)에 있는 파일과 **같은 이름**으로 내 그림을 넣습니다.
+   - 어떤 파일이 화면 어디에 쓰이는지는 [`CREDITS.md`](frontend/img-free/CREDITS.md)의 표를 보세요.
+   - 일부만 넣어도 돼요. 없는 파일은 기본 이미지가 대신 보여요.
+3. 브라우저에서 새로고침(`Ctrl + Shift + R`)하면 바로 바뀌어요. 서버는 다시 켜지 않아도 돼요.
 
-- 저작권이 있는 그림은 **`frontend/img/`에만** 두세요. `.gitignore`가 `img`로 시작하는 폴더(`img`, `img_off`, `img-backup` 등)를 모두 제외해서 GitHub에 올라가지 않아요. 공유용 `img-free`만 예외예요.
-- 기본 이미지로 잠깐 보고 싶으면 `frontend/img`를 `frontend/img_off`처럼 이름만 바꾸고 새로고침하세요. 다시 `img`로 돌리면 원래 그림으로 돌아와요.
-- 커밋 전에는 `git status`로 올라갈 파일 목록에 개인 이미지가 없는지 한 번 확인하세요.
-- AI 일정 추천은 OpenAI 모델이 만든 초안이며, 장소·영업·가격·교통비 정보는 사실과 다를 수 있어요.
+- 원래대로 돌리려면 `frontend/img/` 폴더를 지우거나 이름을 바꾸면 돼요.
+- `frontend/img/`처럼 `img`로 시작하는 폴더는 `.gitignore`에 들어 있어서, 이 저장소를 fork해서 올려도 GitHub에 올라가지 않아요.
+
+---
+
+## 11. 사용한 서비스·오픈소스
+
+**P의 여행수첩** 기획·개발 © 2026 sillverwater
+
+| 구분 | 이름 | 라이선스·이용 조건 |
+|---|---|---|
+| 장소 검색·지도 | [카카오 로컬 API, 카카오맵](https://developers.kakao.com) © Kakao Corp. | 카카오 개발자 이용약관 |
+| 블로그 언급 수 | 다음(Daum) 블로그 검색 API © Kakao Corp. | 카카오 개발자 이용약관 |
+| 자동차 길찾기·택시비 | [카카오모빌리티 길찾기 API](https://developers.kakaomobility.com) © Kakao Mobility Corp. | 카카오모빌리티 이용약관 |
+| 보조 장소 데이터 | © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors | ODbL |
+| 도보 경로 | [OSRM](https://project-osrm.org) (FOSSGIS routing.openstreetmap.de) | OSM 데이터 ODbL, 서비스 공정 이용 |
+| AI | [OpenAI API](https://platform.openai.com) — gpt-4o-mini, text-embedding-3-small | OpenAI 이용약관 (사용자 본인 키) |
+| 아이콘 | [OpenMoji](https://openmoji.org) | CC BY-SA 4.0 — 출처: [`CREDITS.md`](frontend/img-free/CREDITS.md) |
+| 타일·배경 이미지 | 직접 제작 | — |
+| 글꼴 | 주아체(Jua), 고운돋움(Gowun Dodum) | SIL Open Font License 1.1 (`frontend/fonts/OFL-*.txt`) |
+| 파이썬 패키지 | FastAPI, openpyxl | MIT |
+| | Uvicorn, python-dotenv, httpx, pypdf | BSD-3-Clause |
+| | openai, tzdata | Apache-2.0 |
+
+> AI 일정 추천은 OpenAI 모델이 만든 초안이에요. 장소·영업시간·가격·교통비는 실제와 다를 수 있으니 출발 전에 카카오맵에서 꼭 확인하세요.
